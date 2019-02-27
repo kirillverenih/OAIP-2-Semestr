@@ -1,0 +1,152 @@
+                                    // My emplamentation
+/*===================[Libraries]==================*/
+#include <vcl.h>
+#include <stdio.h>
+#include <io.h>
+#include <windows.h>
+#include <conio.h>
+
+/*===================[Variebles]==================*/
+struct callStruct {
+  char date[10], city[20], incomingNum[13], outcomingNum[13];
+  int cityCode, time;
+  double price;
+} call, TempStorForWriting;
+
+int size = sizeof(callStruct);
+FILE *File_Pointer;
+char File_Name[] = "MyFileWithData.dat";
+
+int kod, D_f, i = 0, j, kol;
+long len;
+callStruct st, *ArrayOfAllCall;
+
+bool NeedToUpdate = true;
+/*===================[Functions]==================*/
+void load() {
+  // Load
+  File_Pointer = fopen(File_Name, "rb");
+  D_f = fileno(File_Pointer);
+  len = filelength(D_f);
+  kol = len / size;
+  ArrayOfAllCall = new callStruct[kol];
+  // Geting data from array
+  for (i = 0; i < kol; i++)
+    fread((ArrayOfAllCall + i), size, 1, File_Pointer);
+  fclose(File_Pointer);
+}
+
+void save() {
+  File_Pointer = fopen(File_Name, "wb");
+  for (int i = 0; i < kol; ++i) {
+    fwrite(&ArrayOfAllCall[i], size, 1, File_Pointer);
+  }
+  fclose(File_Pointer);
+}
+
+void AddToFile(callStruct OutSt) {
+  File_Pointer = fopen(File_Name, "ab");
+  fwrite(&OutSt, size, 1, File_Pointer);
+  fclose(File_Pointer);
+}
+
+void CraeteNewCall() {
+  // Add
+  system("cls");
+
+  printf("\n date > ");
+  fflush(stdin);
+  gets(TempStorForWriting.date);
+                
+  printf("\n city > ");
+  fflush(stdin);
+  gets(TempStorForWriting.city);                 
+
+  printf("\n incomingNum > ");
+  fflush(stdin);
+  gets(TempStorForWriting.incomingNum);             
+
+  printf("\n outcomingNum > ");
+  fflush(stdin);
+  gets(TempStorForWriting.outcomingNum);             
+
+  printf("\n cityCode > ");
+  scanf("%d", &TempStorForWriting.cityCode);    
+
+  printf("\n time > ");
+  scanf("%d", &TempStorForWriting.time);
+
+  printf("\n price > ");
+  scanf("%d", &TempStorForWriting.price);
+  
+ }
+
+/*===================[Main]=======================*/
+void main() {
+  while (true) {
+    system("cls");
+    puts("\n 1 Save      \n 2 Load   \n 3 View all calls    \n 4 Add new  "
+         "\n 5 QuicSort  \n 6 Binary \n 7 Linear ");
+    scanf("%d", &kod);
+
+    if (NeedToUpdate == true) {
+      NeedToUpdate = false;
+      load();
+    }
+
+    if (kod == 4) {
+      save();
+    }
+
+    switch (kod) {
+      case 1:
+        // Save data to file
+        save();
+        break;
+
+      case 2:
+        // Load data from file
+        load();
+        break;
+
+      case 3:
+        // View all students
+        system("cls");
+        printf(
+            "==============================[List of all calls]==============================");
+        printf("\n \n");
+        for (int i = 0; i < kol; ++i) {
+          printf("\n %3d %10s %20s %13s %13s %3d %5f %5d ",
+                 i + 1, 
+                 ArrayOfAllCall[i].date,
+                 ArrayOfAllCall[i].city,
+                 ArrayOfAllCall[i].incomingNum,
+                 ArrayOfAllCall[i].outcomingNum,
+                 ArrayOfAllCall[i].cityCode,
+                 ArrayOfAllCall[i].time,
+                 ArrayOfAllCall[i].price
+                 );
+        }
+        /*
+        char date[10], city[20], incomingNum[13], incomingNum[13];
+  int cityCode, time, price;
+        */
+        printf(
+            "\n==================================================================================");
+        getch();
+        break;
+
+      case 4:
+        // Create new student
+        CraeteNewCall();
+        AddToFile(TempStorForWriting);
+        NeedToUpdate = true;
+        break;
+
+      default:
+        break;
+    }
+  }
+}
+
+

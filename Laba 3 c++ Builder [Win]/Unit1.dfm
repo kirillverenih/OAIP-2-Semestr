@@ -1,0 +1,79 @@
+object Form1: TForm1
+  Left = 182
+  Top = 115
+  Width = 516
+  Height = 290
+  Caption = 'Form1'
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object GroupBox1: TGroupBox
+    Left = 24
+    Top = 16
+    Width = 185
+    Height = 137
+    Caption = ' '
+    TabOrder = 0
+    object RadioButton1: TRadioButton
+      Left = 16
+      Top = 24
+      Width = 153
+      Height = 17
+      Caption = #1056#1077#1082#1091#1088#1089#1080#1074#1085#1086#1077' '#1088#1077#1096#1077#1085#1080#1077
+      TabOrder = 0
+      OnClick = RadioButton1Click
+    end
+    object RadioButton2: TRadioButton
+      Left = 16
+      Top = 48
+      Width = 153
+      Height = 17
+      Caption = #1054#1073#1099#1095#1085#1086#1077' '#1088#1077#1096#1077#1085#1080#1077
+      TabOrder = 1
+      OnClick = RadioButton2Click
+    end
+  end
+  object GroupBox2: TGroupBox
+    Left = 232
+    Top = 16
+    Width = 185
+    Height = 137
+    TabOrder = 1
+    object Label1: TLabel
+      Left = 24
+      Top = 24
+      Width = 52
+      Height = 20
+      Caption = #1054#1090#1074#1077#1090':'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Button1: TButton
+      Left = 24
+      Top = 96
+      Width = 137
+      Height = 25
+      Caption = 'ok'
+      TabOrder = 0
+      OnClick = Button1Click
+    end
+    object Edit1: TEdit
+      Left = 24
+      Top = 64
+      Width = 137
+      Height = 21
+      TabOrder = 1
+      OnChange = Edit1Change
+    end
+  end
+end
