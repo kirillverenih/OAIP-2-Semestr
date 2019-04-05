@@ -1,3 +1,3 @@
 ﻿  Laba 5.cpp
-c:\users\kirill\yandexdisk\вуз\1 курс\оаип\[2 семестр]\laba 5\laba 5\laba 5\laba 5.cpp(23): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-  Laba 5.vcxproj -> C:\Users\Kirill\YandexDisk\ВУЗ\1 Курс\ОАиП\[2 Семестр]\Laba 5\Laba 5\Debug\Laba 5.exe
+c:\users\kirill\yandexdisk\вуз\1 курс\оаип\[2 семестр]\laba 5 vs\laba 5\laba 5\laba 5.cpp(21): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  Laba 5.vcxproj -> C:\Users\Kirill\YandexDisk\ВУЗ\1 Курс\ОАиП\[2 Семестр]\Laba 5 VS\Laba 5\Debug\Laba 5.exe

@@ -1,52 +1,47 @@
 ﻿#include "pch.h"
 #include <iostream>
-#include<ctime>
+#include <ctime>
 #include <clocale>
 using namespace std;
 
-struct Stack
-{
+struct Stack {
 	int info;
 	Stack *adr;
 };
 
-void   Watch(Stack *head);			// выводик элементов
-int    menu(Stack *head);			// менюшечка
-Stack* DopRand(Stack *head);		// добавление рандомных элементов
-Stack* InStack(Stack *p, int in);	// добавление элемента
-void   Sort(Stack *head);			// сортировочка
-Stack* Mission(Stack *head);		// выполнение задания (удаление отрицательных элементов)
-Stack* Clear(Stack *head);			// очистка стека
+void Watch(Stack *head);				// выводик элементов
+int menu(Stack *head);					// менюшечка
+Stack *DopRand(Stack *head);			// добавление рандомных элементов
+Stack *InStack(Stack *p, int in);		// добавление элемента
+void Sort(Stack *head);					// сортировочка
+Stack *Mission(Stack *head);			// выполнение задания (удаление отрицательных элементов)
+Stack *Clear(Stack *head);				// очистка стека
 
-int main()
-{
+int main() {
 	srand(time(0));
 	setlocale(LC_ALL, "rus");
 	Stack *head = NULL;
-	while (true)
-	{
+	while (true) {
 		int number = menu(head);
-		switch (number)
-		{
-		case 1: //Добавление рандомных элементов
+		switch (number) {
+		case 1:  //Добавление рандомных элементов
 			head = DopRand(head);
 			break;
-		case 2: //Добавление элемента пользователя
+		case 2:  //Добавление элемента пользователя
 			int x;
 			system("cls");
 			cout << "Введите элемент, который желаете добавить:\t";
 			cin >> x;
 			head = InStack(head, x);
 			break;
-		case 3: //сортировка стека
-			if (head == NULL || head->adr == NULL)
-				break;
+		case 3:  //сортировка стека
+			if (head == NULL || head->adr == NULL) break;
 			Sort(head);
 			break;
-		case 4: //удаление всех отрицательных элементов
+		case 4:  //удаление всех отрицательных элементов
 			head = Mission(head);
 			break;
-		case 5: //очистка стека
+		case 5:  //очистка стека
 			head = Clear(head);
 			break;
 		case 6:
@@ -57,119 +52,96 @@ int main()
 	}
 }
 
-void   Watch(Stack *head)
-{
+void Watch(Stack *head) {
 	cout << "Cтек:\t";
 	Stack *sp = head;
-	if (sp == NULL)
-		cout << "Cтек пуст";
-	while (sp != NULL)
-	{
+	if (sp == NULL) cout << "Cтек пуст";
+	while (sp != NULL) {
 		cout << sp->info;
-		if (sp->adr != NULL)
-			cout << ", ";
+		if (sp->adr != NULL) cout << ", ";
 		sp = sp->adr;
 	}
-	if (sp == NULL)
-		cout << ".";
+	if (sp == NULL) cout << ".";
 }
-int    menu(Stack *head)
-{
+int menu(Stack *head) {
 	setlocale(LC_ALL, "rus");
 	system("cls");
 	Watch(head);
 	int number;
 	cout << endl << "  Выберите действие:";
-	cout << "\n	1. Добавить случайных элементов в стек.\n	2. Добавить элемент в стек.\n	3. Сортировка стека.\n	4. Выполнение задания (удалить все отрицательные элементы).\n	5. Очистить стек.\n	0. Выход.\n";
+	cout << "\n	1. Добавить случайных элементов в стек.\n	2. Добавить "
+		"элемент в стек.\n	3. Сортировка стека.\n	4. Выполнение задания "
+		"(удалить все отрицательные элементы).\n	5. Очистить стек.\n	"
+		"0. Выход.\n";
 	cout << "-->";
 	cin >> number;
 	return number;
 }
-Stack* DopRand(Stack *head)
-{
+Stack *DopRand(Stack *head) {
 	system("cls");
 	int kol, x;
 	cout << "Введите количество элементов, которое желаете добавить:\t";
 	cin >> kol;
-	for (int i = 0; i < kol; i++)
-	{
+	for (int i = 0; i < kol; i++) {
 		x = -9 + rand() % 18;
 		head = InStack(head, x);
 	}
 	return head;
 }
-Stack* InStack(Stack *p, int in)
-{
+
+Stack *InStack(Stack *p, int in) {
 	Stack *t = new Stack;
 	t->info = in;
 	t->adr = p;
 	return t;
 }
-void   Sort(Stack *head)
-{
+
+void Sort(Stack *head) {
 	Stack *t = NULL;
 	Stack *t1;
 	int x;
-	do
-	{
+	do {
 		for (t1 = head; t1->adr != t; t1 = t1->adr)
-			if (t1->info > t1->adr->info)
-			{
+			if (t1->info > t1->adr->info) {
 				x = t1->info;
 				t1->info = t1->adr->info;
 				t1->adr->info = x;
 			}
 		t = t1;
 	} while (head->adr != t);
-
 }
-Stack* Mission(Stack* head)
-{
+
+Stack *Mission(Stack *head) {
 	Stack *P = head;
-	if (head == NULL)
-		cout << "Ваш стек пустой!";
-	while (P->adr != NULL)
-	{
+	if (head == NULL) cout << "Ваш стек пустой!";
+	while (P->adr != NULL) {
 		//-------------------
-		if (P->info < 0)
-		{
+		if (P->info % 2 == 0) {
 			Stack *st = head;
 			head = head->adr;
 			P = P->adr;
 			delete st;
 		}
 		//--------------------
-		else
-		{
-			if (P->adr->info < 0)
-			{
-				Stack *st = P->adr;
-				P->adr = P->adr->adr;
-				delete st;
-			}
-			else P = P->adr;
+		else {
+			P = P->adr;
 		}
 		//--------------------
 	}
-	if (head->adr == NULL && head->info < 0)
-	{
+	if (head->adr == NULL && head->info < 0) {
 		Stack *st = head;
 		head = head->adr;
 		delete st;
 	}
 	return head;
 }
-Stack* Clear(Stack *head)
-{
+Stack *Clear(Stack *head) {
 	Stack *sp = head;
 	Stack *st;
-	while (sp != NULL)
-	{
+	while (sp != NULL) {
 		st = sp;
 		sp = sp->adr;
 		delete st;
 	}
 	return sp;
 }
-
-
