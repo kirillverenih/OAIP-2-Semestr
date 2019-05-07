@@ -1,0 +1,6 @@
+﻿  MyForm.cpp
+c:\users\kirill\yandexdisk\вуз\1 курс\оаип\[2 семестр]\laba 8 графика\oaipgraph\graph\myform.h(289): warning C4554: "|": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
+c:\users\kirill\yandexdisk\вуз\1 курс\оаип\[2 семестр]\laba 8 графика\oaipgraph\graph\myform.h(297): warning C4554: "|": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
+c:\users\kirill\yandexdisk\вуз\1 курс\оаип\[2 семестр]\laba 8 графика\oaipgraph\graph\myform.h(305): warning C4554: "|": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
+  MyForm.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
+  Graph.vcxproj -> C:\Users\Kirill\YandexDisk\ВУЗ\1 Курс\ОАиП\[2 Семестр]\Laba 8 Графика\oaipgraph\Debug\Graph.exe

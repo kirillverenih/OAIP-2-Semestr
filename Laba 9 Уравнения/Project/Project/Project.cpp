@@ -19,8 +19,8 @@ double find(double start, double end, double step)
 	do {
 		f = func(x);						//find y(end of interval)
 		f0 = func(start);					//find y(begin of interval)
-		x = x - f / (f - f0) * (x - start);	//formula
-	} while (fabs(f) > step);				//rounding 
+		x = x - f / (f - f0) * (x - start);	
+	} while (fabs(f) > step);				
 	return x;
 }
 

@@ -205,7 +205,7 @@ void task(Tree* p)
 	string str;
 	if (p)
 	{
-		if (p != NULL && p->right == NULL && p->left == NULL)
+		if (p->right == NULL && p->left == NULL)
 			leafCount++;
 		task(p->right);
 		task(p->left);

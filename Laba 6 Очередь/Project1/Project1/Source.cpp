@@ -20,6 +20,7 @@ struct queue
 };
 
 void print(queue* myQueue);
+void printBack(queue* myQueue);
 int isEmpty(queue* myQueue);
 void pushBegin(queue*& myQueue, int info);
 void pushEnd(queue*& myQueue, int info);
@@ -50,6 +51,22 @@ void print(queue* myQueue)
 	return;
 }
 
+void printBack(queue* myQueue)
+{
+	if (myQueue->begin == nullptr)
+		return;
+
+	queue* temp = myQueue->begin;
+
+	while (temp != nullptr)
+	{
+		cout << temp->data << " ";
+		temp = temp->prev;
+	}
+	cout << endl;
+
+	return;
+}
 
 
 int isEmpty(queue* myQueue)
@@ -230,9 +247,12 @@ void checkFromSides(queue *&myQueue) {
 
 void task(queue* myQueue)
 {
+
 	if (isEmpty(myQueue))
 		return;
 
+	checkFromSides(myQueue);
+/*
 	int size_ = size(myQueue);
 	if (size_ == 1) {
 		if (myQueue->data % 2 == 0) {
@@ -256,11 +276,10 @@ void task(queue* myQueue)
 		}
 		return;
 	}
-
+	*/
 //2 1 2 3 4 5 6 4 6 3 10
 // если очередь из 2
 
-	checkFromSides(myQueue);
 	queue* temp = myQueue->begin;
 	while (temp != nullptr) 
 	{
@@ -268,6 +287,7 @@ void task(queue* myQueue)
 		{
 			queue *val = temp;
 			temp->prev->next = temp->next;
+			temp->next->prev = temp->prev;
 			temp = temp->prev;
 			delete val;
 		}
@@ -275,6 +295,7 @@ void task(queue* myQueue)
 		{
 			temp = temp->prev;
 		}
+
 		
 	}
 	cout << endl;
@@ -309,31 +330,19 @@ int main(void)
 	print(myQueue);
 
 	pushBegin(myQueue, 2);
-	pushBegin(myQueue, 2);
-	pushBegin(myQueue, 2);
-	pushBegin(myQueue, 2);
-	pushBegin(myQueue, 1);
-	pushBegin(myQueue, 2);
 	pushBegin(myQueue, 3);
-	pushBegin(myQueue, 4);
-	pushBegin(myQueue, 5);
-	pushBegin(myQueue, 6);
-	pushBegin(myQueue, 4);
-	pushBegin(myQueue, 6);
-	pushBegin(myQueue, 3);
-	pushBegin(myQueue, 10);
-	pushBegin(myQueue, 2);
-	pushBegin(myQueue, 2);
-	pushBegin(myQueue, 2);
-	pushBegin(myQueue, 2);
+
 
 
 	cout << "Before " << endl;
 	print(myQueue);
+	cout << "Befor from back" << endl;
+	printBack(myQueue);
 
 	cout << "After " << endl;
 	task(myQueue);
 	print(myQueue);
+	printBack(myQueue);
 
 	clean(myQueue);
 	delete myQueue;
