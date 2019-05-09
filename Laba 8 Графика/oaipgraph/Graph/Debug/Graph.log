@@ -1,6 +1,9 @@
 ﻿  MyForm.cpp
-c:\users\kirill\yandexdisk\вуз\1 курс\оаип\[2 семестр]\laba 8 графика\oaipgraph\graph\myform.h(289): warning C4554: "|": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
-c:\users\kirill\yandexdisk\вуз\1 курс\оаип\[2 семестр]\laba 8 графика\oaipgraph\graph\myform.h(297): warning C4554: "|": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
-c:\users\kirill\yandexdisk\вуз\1 курс\оаип\[2 семестр]\laba 8 графика\oaipgraph\graph\myform.h(305): warning C4554: "|": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
+c:\users\kirill\yandexdisk\вуз\1 курс\оаип\[2 семестр]\laba 8 графика\oaipgraph\graph\myform.h(292): warning C4554: "|": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
+c:\users\kirill\yandexdisk\вуз\1 курс\оаип\[2 семестр]\laba 8 графика\oaipgraph\graph\myform.h(300): warning C4554: "|": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
+c:\users\kirill\yandexdisk\вуз\1 курс\оаип\[2 семестр]\laba 8 графика\oaipgraph\graph\myform.h(308): warning C4554: "|": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
+c:\users\kirill\yandexdisk\вуз\1 курс\оаип\[2 семестр]\laba 8 графика\oaipgraph\graph\myform.h(329): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+c:\users\kirill\yandexdisk\вуз\1 курс\оаип\[2 семестр]\laba 8 графика\oaipgraph\graph\myform.h(331): warning C4305: инициализация: усечение из "double" в "float"
+c:\users\kirill\yandexdisk\вуз\1 курс\оаип\[2 семестр]\laba 8 графика\oaipgraph\graph\myform.h(338): warning C4305: +=: усечение из "double" в "float"
   MyForm.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
   Graph.vcxproj -> C:\Users\Kirill\YandexDisk\ВУЗ\1 Курс\ОАиП\[2 Семестр]\Laba 8 Графика\oaipgraph\Debug\Graph.exe

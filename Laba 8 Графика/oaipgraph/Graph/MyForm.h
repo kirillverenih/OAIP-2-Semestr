@@ -146,9 +146,9 @@ namespace Graph
 			this->checkBox1->Location = System::Drawing::Point(473, 571);
 			this->checkBox1->Margin = System::Windows::Forms::Padding(4);
 			this->checkBox1->Name = L"checkBox1";
-			this->checkBox1->Size = System::Drawing::Size(53, 21);
+			this->checkBox1->Size = System::Drawing::Size(68, 21);
 			this->checkBox1->TabIndex = 4;
-			this->checkBox1->Text = L"y(x)";
+			this->checkBox1->Text = L"cos(x)";
 			this->checkBox1->UseVisualStyleBackColor = true;
 			this->checkBox1->CheckedChanged += gcnew System::EventHandler(this, &MyForm::checkBox1_CheckedChanged);
 			// 
@@ -241,11 +241,12 @@ namespace Graph
 				chart1->Series[0]->Points->Clear();
 				for (double x = -10; x < 10; x += 0.1)
 				{
-					chart1->Series[0]->Points->AddXY(x , exp(cos(x))*cos(sin(x)));
+					chart1->Series[0]->Points->AddXY(x ,cos(x));
 				}
 				chart1->Series[0]->Name = "Y(x)";
 				break;
 			}
+
 			case 1:
 			{
 				chart1->Series[0]->Points->Clear();
@@ -263,6 +264,7 @@ namespace Graph
 				chart1->Series[0]->Name = "S(x)";
 				break;
 			}
+
 			case 2:
 			{
 				chart1->Series[0]->Points->Clear();
@@ -310,45 +312,33 @@ namespace Graph
 		}
 	}
 
-			 void DrawCircle_1(int x , int y , Graphics^ gr , SolidBrush^ color)
-			 {
-				 int xc , yc;
-				 xc = x - 20;
-				 yc = y - 20;
-				 gr->FillEllipse(color , xc , yc , 20 , 20);
-
-			 }
 	private: System::Void button2_Click(System::Object^  sender , System::EventArgs^  e)
 	{
-
-		Graphics ^battlefield = pictureBox1->CreateGraphics();
+		int x1 = 0 , y1 = 0;
+		Graphics ^canvas = pictureBox1->CreateGraphics();
+		SolidBrush ^drawing = gcnew SolidBrush(Color::DarkMagenta);
+		SolidBrush ^drawing2 = gcnew SolidBrush(Color::Olive);
 		pictureBox1->Image = nullptr;
-		SolidBrush ^d = gcnew SolidBrush(Color::Black);
-		SolidBrush ^drawing = gcnew SolidBrush(Color::Black);
-		Pen ^a = gcnew Pen(Color::Black);
-		battlefield->FillRectangle(d , 0 , 0 , 284 , 342);
-		int x1 = 0 , y1 = 0 , x2 = pictureBox1->Width , y2 = pictureBox1->Height;
+		canvas->Clear(Color::White);
+		pictureBox1->Image = Image::FromFile("C:\\3.png");
 
-		for (size_t i = 0; i < 150; i++)
+		for (x1 = 0; x1 < pictureBox1->Width; x1 += 2)
 		{
-			Sleep(30);
+			Sleep(5);
 			pictureBox1->Refresh();
-			DrawCircle_1(rand() % 284+1 , rand()% 342+1, battlefield , d);
-			
+			canvas->FillRectangle(drawing , x1 , sin(x1/4) * 40 + 150 , 20 , 20);
 		}
-		battlefield->Clear(Color::White);
-		pictureBox1->Image= Image::FromFile("C:\\2.jpg");
-		//for (x1 , y1 , x2 , y2; x1 < pictureBox1->Width , y1 < pictureBox1->Height , x2>0 , y2>0; x1++ , x2--)
-		//{
-		//	Sleep(5);
-		//	pictureBox1->Refresh();
-		//	battlefield->FillRectangle(drawing , x1 , y1 , 20 , 20);
-		//	battlefield->FillRectangle(drawing , x2 , y2 , 20 , 20);
+		float num = 0.1;
 
-		//}
-		//CONTINUE HERE
-
+		for (x1 = 1; x1 < pictureBox1->Width; x1 += 2)
+		{
+			Sleep(5);
+			pictureBox1->Refresh();
+			canvas->FillEllipse(drawing2, x1, (int)(250/num), 60, 60);
+			num += 0.05;
+		}
 	}
+
 	private: System::Void button3_Click(System::Object^  sender , System::EventArgs^  e)
 	{
 		pictureBox1->SizeMode = PictureBoxSizeMode::StretchImage;
